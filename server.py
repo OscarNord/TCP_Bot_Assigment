@@ -16,7 +16,7 @@ try:
                 client.send(f'{msg}'.encode('utf-8'))
       
     # Funtion to handle clients' connections
-    def handle_client(client):
+    def handleClient(client):
         while True:
             try:
                 msg = client.recv(1024).decode('utf-8')
@@ -29,11 +29,11 @@ try:
             except:
                 break
 
-        client_leave(client) #cuts connetion at the end
+        clientLeave(client) #cuts connetion at the end
 
 
     # funtion that cuts clients connection with server
-    def client_leave(leavingClient):
+    def clientLeave(leavingClient):
             index = clients.index(leavingClient)
             clients.remove(leavingClient)
             leavingClient.close()
@@ -67,7 +67,7 @@ try:
             client.send('\nIf you wish to leave, write "farewell"\n'.encode('utf-8'))
             if len(clients) <= 1:   #Checks if the connected client is the alone when entering
                 client.send("\nWhat do you like to do?".encode('utf-8'))
-            thread = threading.Thread(target=handle_client, args=(client,))
+            thread = threading.Thread(target=handleClient, args=(client,))
             thread.start()
          
 

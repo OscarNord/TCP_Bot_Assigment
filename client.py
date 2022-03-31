@@ -18,7 +18,7 @@ try:
     
 
     # function that handles servers connection
-    def client_receive():
+    def clientReceive():
         while True:
             try:
                 msg = client.recv(1024).decode('utf-8')
@@ -51,7 +51,7 @@ try:
 
     # main function that starts threads
     def main():
-        receive_thread = threading.Thread(target= client_receive)
+        receive_thread = threading.Thread(target= clientReceive)
         send_thread = threading.Thread(target= client_send)
         receive_thread.start()
         send_thread.start()
