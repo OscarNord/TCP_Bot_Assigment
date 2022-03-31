@@ -12,6 +12,7 @@ def einsteinResponse(alt1):
                     f'[Einstein]: I thing I will go and play chess with Niels Bohr.']
     return random.choice(responseList)
 
+
 def napoleonResponse(alt1):
     alt2 = random.choice(dataset.positive_verbs_ING)
     responseList = [f'[Napoleon the tall]: I like to {alt1} too, but have you ever tried {alt2}?',
@@ -21,14 +22,16 @@ def napoleonResponse(alt1):
                     f'[Napoleon the tall]: 1....2.... lets {alt1}!!']
     return random.choice(responseList)
 
+
 def trumpResponse(alt1):
     alt2 = random.choice(dataset.positive_verbs_ING)
     responseList = [f'[realDonaldTrump]: I will make america great again! But first, lets {alt1}.',
                     f'[realDonaldTrump]: Its no fun to {alt1}. I will just win anyway, by a landslide.',
                     f'[realDonaldTrump]: You are fired!',
                     f'[realDonaldTrump]: You are hired!',
-                    f'[realDonaldTrump]: Can you not go and ask sleepyJoe to {alt1}. I want to go {alt2} instead.']
+                    f'[realDonaldTrump]: Can you not go and ask sleepyJoe to {alt1}? I want to go {alt2} instead.']
     return random.choice(responseList)
+
 
 def kanyeResponse(alt1):
     alt2 = random.choice(dataset.positive_verbs_ING)
@@ -54,26 +57,26 @@ banned_char = [",", ".", "!", "?"]
  
 
 def bot(message: str):
-    print('im in')
+    
     # Filters message to make it readable
     for c in banned_char:
         message.replace(c, "")
     msg_array = message.lower().split()
-    alternative = ""
-    print('done filtering')
+    wordFound = ""
+
     #If the message is a greeting than a random bot greets the client
     if msg_array[1] in dataset.greetings:
         return f'[{random.choice(bot_names)}]: {random.choice(dataset.greetings)}!' 
-    print('greeting checkd')
+
     #Checks if there is any known word in the database that can be used to respond with.
     for msg in msg_array:
         if msg in dataset.positive_verbs:
-            alternative = msg
+            wordFound = msg
             break
-    print('words chkd')
+
     #If not, then chooses a random word.
-    if alternative == "":
-        alternative = random.choice(dataset.positive_verbs)
-    print('returns')
-    return random.choice(available_bots)(alternative)
+    if wordFound == "":
+        wordFound = random.choice(dataset.positive_verbs)
+
+    return random.choice(available_bots)(wordFound)
     
