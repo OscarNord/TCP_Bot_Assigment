@@ -17,7 +17,7 @@ def napoleonResponse(alt1):
     alt2 = random.choice(dataset.positive_verbs_ING)
     responseList = [f'[Napoleon the tall]: I like to {alt1} too, but have you ever tried {alt2}?',
                     f'[Napoleon the tall]: Mon dieu! I hate to {alt1}!',
-                    f'[Napoleon the tall]: {alt1}?? Cant we invade the soviets first?',
+                    f'[Napoleon the tall]: {alt1}?? Cant we invade the russians first?',
                     f'[Napoleon the tall]: Viva la France!!',
                     f'[Napoleon the tall]: 1....2.... lets {alt1}!!']
     return random.choice(responseList)
